@@ -1,21 +1,25 @@
 # reactSamples
 
-# if you need live-server
-npm i -g live-server
-# to run in, assuming you're in a folder which has a public folder with the files you want to server
-live-server public
-# install babel to compile react to javascript
-npm i -g babel-cli
-# install yarn, just another package manager like npm
+## install yarn, just another package manager like npm
 npm i -g yarn
-# in the project directory initialise the project, which creates package.json which captures all dependencies
-yarn init
-# yarn or npm will also install dependencies of anything installed in a node_modules directory
-# yarn install, will install all dependencies in the local package.json and everything in node_modules
 
-# add presets to babel which install all the extra bits babel need to work with react and to use newer features of js
-yarn add babel-present-react babel-preset-env
-# to compile src to vanilla javascript using the react and env presets and keep watching and automatically
-# compile when changes are saved (with the --watch argument)...
-babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+## install everything in packages.json
+yarn install
 
+## now use the scripts defined in packages.json to run webpack dev server which monitors for changes in files
+## and automatically changes the served content 
+yarn run dev-server
+
+## Check package.json for all the packages includes
+
+## Check webpack.config.js for the entry, output and rules for building our final js file with all modules
+
+## Also because we include babel-loader in the webpack.config.js rules, we added a .bablerc file which specifies
+## that babel should add the env and react presets (like babel bundles) to allow it to compile ES6 and react into
+## ES5 js
+
+## Also note that we've included a 'devtool' entry in webpack.configs.js, this provides a source map that help the
+## browser figure out where the error was in the source file rather than just the compiled javascript file
+
+## Also note we've included configuration for the devServer in webpack.configs.js, this doesn't create the bundle.js file on disk, it creates it and updates it in memory while serving. To create the bundle.js file on disk run ...
+yarn run build
